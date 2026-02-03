@@ -19,14 +19,11 @@ jobs:
       - name: Install deps
         run: |
           python -m pip install --upgrade pip
-          # 프로젝트 의존성
           if [ -f requirements.txt ]; then
             pip install -r requirements.txt
           fi
-          # 테스트/커버리지 도구
-          pip install pytest pytest-cov
+          pip install pytest pytest-cov pyyaml
 
-      # baseline id를 CI 런 단위로 고정(추후 PR/브랜치 기반으로 개선 가능)
       - name: Set BASELINE_ID
         shell: bash
         run: |
@@ -40,8 +37,14 @@ jobs:
             --junitxml=artifacts/junit.xml \
             --cov=src --cov-report=xml:artifacts/coverage.xml
 
-      # trace matrix는 원래 MCP가 생성/커밋하는 게 이상적이지만,
-      # 최소 동작을 위해 CI에서 placeholder라도 생성(나중에 교체)
+      - name: Coverage gate (policy pack)
+        shell: bash
+        run: |
+          python tools/validate_coverage.py \
+            --coverage-xml artifacts/coverage.xml \
+            --policy-pack defense-lite \
+            --repo-root .
+
       - name: Create trace matrix (placeholder)
         shell: bash
         run: |

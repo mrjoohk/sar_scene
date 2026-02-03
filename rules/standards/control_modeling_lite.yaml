@@ -1,0 +1,21 @@
+name: control-modeling-lite
+rules:
+  - id: CTRL-REQ-ENV-001
+    description: "동역학/제어 요구사항은 운용영역(envelope), 조건(고도/속도/질량/CG), 성능지표(오버슈트/정착시간/추종오차)로 정량화되어야 한다."
+    kb_query: "flight dynamics control requirement envelope altitude speed mass CG overshoot settling time tracking error"
+    severity: warn
+
+  - id: CTRL-STAB-001
+    description: "안정성(stability) 요구사항이 있으면 기준(극/영점, damping ratio, gain/phase margin 등)을 포함해야 한다."
+    kb_query: "stability requirement pole damping ratio gain margin phase margin discrete-time criteria"
+    severity: warn
+
+  - id: CTRL-RT-001
+    description: "실시간 제어(loop) 요구사항은 주기(Hz), 지터, 결정성(determinism), worst-case latency 기준을 포함해야 한다."
+    kb_query: "real-time control loop frequency jitter determinism worst-case latency 120Hz"
+    severity: warn
+
+  - id: CTRL-VAL-001
+    description: "모델/시뮬레이터 검증은 기준 데이터셋, 메트릭, 허용오차(acceptance)로 명확히 해야 한다."
+    kb_query: "model validation dataset metric acceptance tolerance system identification N4SID"
+    severity: warn
