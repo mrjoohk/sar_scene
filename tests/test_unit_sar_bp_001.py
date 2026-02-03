@@ -4,7 +4,7 @@ import numpy as np
 
 
 def test_unit_sar_bp_001_smoke():
-    m = importlib.import_module("src.sar.bp_unit")
+    m = importlib.import_module("sar.bp_unit")
     unit = m.UnitSarBp001()
     out = unit.run({"seed": 42, "scenario": "SAR_SCN_01", "input_shape": (64, 64)})
 
@@ -15,7 +15,7 @@ def test_unit_sar_bp_001_smoke():
 
 
 def test_unit_sar_bp_001_reproducible():
-    m = importlib.import_module("src.sar.bp_unit")
+    m = importlib.import_module("sar.bp_unit")
     unit = m.UnitSarBp001()
     cfg = {"seed": 7, "scenario": "SAR_SCN_02", "input_shape": "64x64"}
 

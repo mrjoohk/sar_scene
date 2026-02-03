@@ -22,6 +22,7 @@ jobs:
           if [ -f requirements.txt ]; then
             pip install -r requirements.txt
           fi
+          python -m pip install -e .
           pip install pytest pytest-cov pyyaml
 
       - name: Set BASELINE_ID

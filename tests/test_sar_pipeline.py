@@ -4,7 +4,7 @@ import numpy as np
 
 
 def test_sar_pipeline_smoke():
-    m = importlib.import_module("src.pipeline.run_sar_pipeline")
+    m = importlib.import_module("pipeline.run_sar_pipeline")
     out = m.run_sar_pipeline({
         "scenario": "SAR_SCN_01",
         "seed": 42,
@@ -18,7 +18,7 @@ def test_sar_pipeline_smoke():
 
 
 def test_sar_pipeline_metrics_acceptance():
-    m = importlib.import_module("src.pipeline.run_sar_pipeline")
+    m = importlib.import_module("pipeline.run_sar_pipeline")
     out = m.run_sar_pipeline({
         "scenario": "SAR_SCN_01",
         "seed": 42,
