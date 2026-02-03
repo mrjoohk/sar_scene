@@ -22,7 +22,6 @@ jobs:
           if [ -f requirements.txt ]; then
             pip install -r requirements.txt
           fi
-          python -m pip install -e .
           pip install pytest pytest-cov pyyaml
 
       - name: Set BASELINE_ID
@@ -37,6 +36,8 @@ jobs:
           pytest -q \
             --junitxml=artifacts/junit.xml \
             --cov=src --cov-report=xml:artifacts/coverage.xml
+            env:
+              PYTHONPATH: ${{ github.workspace }}/sar_scene
 
       - name: Coverage gate (policy pack)
         shell: bash
