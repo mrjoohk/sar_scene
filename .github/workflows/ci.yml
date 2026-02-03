@@ -37,7 +37,7 @@ jobs:
             --junitxml=artifacts/junit.xml \
             --cov=src --cov-report=xml:artifacts/coverage.xml
             env:
-              PYTHONPATH: ${{ github.workspace }}/sar_scene
+              PYTHONPATH: ${{ github.workspace }}/src
 
       - name: Coverage gate (policy pack)
         shell: bash
