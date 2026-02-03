@@ -1,0 +1,5 @@
+datasets:
+  - name: "sar_phase_history_v1"
+    version: "1.0"
+    location: "s3://... or internal path"
+    sha256: "TODO"
