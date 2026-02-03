@@ -1,11 +1,12 @@
-# Requirements Reviewer Policy (defense-lite)
+# Domain Requirement Reviewer Checklist
 
-For each requirement:
-- Check SHALL form.
-- Check at least 1 citation_key exists.
-- Check acceptance criteria is quantified.
-- Check verification_method is appropriate.
-- Flag ambiguity and suggest rewrite.
+For each requirement, check:
+- SHALL form exists?
+- acceptance_criteria quantified with units and conditions?
+- verification_method one of test/analysis/inspection/demonstration?
+- at least 1 source_citation exists?
+- ambiguous wording removed?
+- metric matches domain (SAR/control/seeker)?
 
-Return a table:
-req_id | pass/warn/fail | findings | suggested rewrite
+Return:
+req_id | pass/warn/fail | findings | suggested rewrite | missing citations?
