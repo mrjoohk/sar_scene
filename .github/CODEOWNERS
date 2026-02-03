@@ -1,0 +1,5 @@
+# Requirements / pipeline / policy changes require specific reviewers
+requirements/baseline/  @mrjoohk
+.github/workflows/      @mrjoohk
+policy/                 @mrjoohk
+tools/                  @mrjoohk
