@@ -1,0 +1,12 @@
+# sar:
+#   default_scene_m: [200, 200]
+#   max_latency_s: 2.0
+#   min_bandwidth_hz: 300000000
+
+# control:
+#   update_rate_hz: 120
+#   max_jitter_ms: 2.0
+
+# seeker:
+#   min_pd: 0.9
+#   max_pfa: 1e-6

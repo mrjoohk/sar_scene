@@ -1,0 +1,35 @@
+name: sar_imaging_lite
+version: 0.1
+rules:
+  - id: SAR-RULE-001
+    description: Cross-range resolution requirement must be quantified with conditions.
+    kb_query: "cross range resolution PRF bandwidth scenario seed"
+    severity: warn
+  - id: SAR-RULE-002
+    description: Bandwidth and PRF constraints should be stated for resolution-related requirements.
+    kb_query: "bandwidth BW PRF Doppler platform velocity resolution"
+    severity: info
+  - id: SAR-RULE-003
+    description: Backprojection requirements should include deterministic settings.
+    kb_query: "backprojection latency seed reproducibility scenario"
+    severity: warn
+  - id: SAR-RULE-004
+    description: Latency limits should be expressed per image with units.
+    kb_query: "latency s image performance VRAM usage"
+    severity: warn
+  - id: SAR-RULE-005
+    description: Memory limits must be specified when GPU resources are relevant.
+    kb_query: "VRAM GB GPU memory usage backprojection"
+    severity: info
+  - id: SAR-RULE-006
+    description: Quality metrics should mention SNR, PSLR, and ISLR thresholds.
+    kb_query: "SNR PSLR ISLR quality metric thresholds"
+    severity: warn
+  - id: SAR-RULE-007
+    description: Requirements should reference scenario and seed for reproducibility.
+    kb_query: "scenario seed reproducibility deterministic"
+    severity: fail
+  - id: SAR-RULE-008
+    description: Traceability should link to trace matrix and test artifacts.
+    kb_query: "trace matrix REQ UNIT CODE TEST CI Evidence"
+    severity: info

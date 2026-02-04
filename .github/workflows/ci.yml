@@ -1,0 +1,80 @@
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches: ["main"]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then
+            pip install -r requirements.txt
+          fi
+          pip install pytest pytest-cov pyyaml
+
+      - name: Set BASELINE_ID
+        shell: bash
+        run: |
+          echo "BASELINE_ID=CI-${{ github.run_id }}" >> $GITHUB_ENV
+
+      - name: Run tests (pytest + junit + coverage.xml)
+        shell: bash
+        run: |
+          mkdir -p artifacts
+          pytest -q \
+            --junitxml=artifacts/junit.xml \
+            --cov=src --cov-report=xml:artifacts/coverage.xml
+            env:
+              PYTHONPATH: ${{ github.workspace }}/src
+
+      - name: Coverage gate (policy pack)
+        shell: bash
+        run: |
+          python tools/validate_coverage.py \
+            --coverage-xml artifacts/coverage.xml \
+            --policy-pack defense-lite \
+            --repo-root .
+
+      - name: Create trace matrix (placeholder)
+        shell: bash
+        run: |
+          mkdir -p trace/matrices
+          TRACE_PATH="trace/matrices/trace_${BASELINE_ID}.csv"
+          echo "from_type,from_id,to_type,to_id,rationale,citation_key" > "${TRACE_PATH}"
+          echo "REQ,REQ-PLACEHOLDER,TEST,TEST-PLACEHOLDER,placeholder,KB:PLACEHOLDER" >> "${TRACE_PATH}"
+          echo "TRACE_PATH=${TRACE_PATH}" >> $GITHUB_ENV
+
+      - name: Create evidence pack
+        shell: bash
+        run: |
+          mkdir -p evidence/manifests
+          python tools/evidence_pack_local.py \
+            --baseline-id "${BASELINE_ID}" \
+            --repo "${{ github.repository }}" \
+            --commit "${{ github.sha }}" \
+            --ci-run-url "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}" \
+            --trace-matrix "${TRACE_PATH}" \
+            --junit "artifacts/junit.xml" \
+            --coverage "artifacts/coverage.xml" \
+            --out-dir "evidence/manifests"
+
+      - name: Upload evidence artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ci-evidence-${{ github.run_id }}
+          path: |
+            artifacts/
+            trace/matrices/
+            evidence/manifests/

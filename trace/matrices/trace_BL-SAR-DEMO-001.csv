@@ -1,0 +1,13 @@
+from_type,from_id,to_type,to_id,rationale,citation_key
+,,,,BP unit produces SAR image outputs.,KB:33d2e98d7555ef33#c0
+,,,,Core BP implementation for resolution.,KB:33d2e98d7555ef33#c0
+,,,,Unit tests cover deterministic image output.,KB:33d2e98d7555ef33#c0
+,,,,Pipeline tests validate resolution metric.,KB:33d2e98d7555ef33#c0
+,,,,BP unit drives runtime behavior.,KB:33d2e98d7555ef33#c0
+,,,,Latency derived from BP processing.,KB:33d2e98d7555ef33#c0
+,,,,Unit smoke test keeps runtime bounded.,KB:33d2e98d7555ef33#c0
+,,,,Pipeline metrics test asserts latency.,KB:33d2e98d7555ef33#c0
+,,,,Quality metrics produced in BP unit.,KB:33d2e98d7555ef33#c0
+,,,,Image quality metrics computed here.,KB:33d2e98d7555ef33#c0
+,,,,Unit tests ensure deterministic outputs.,KB:33d2e98d7555ef33#c0
+,,,,E2E tests validate quality thresholds.,KB:33d2e98d7555ef33#c0

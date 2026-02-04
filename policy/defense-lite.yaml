@@ -1,0 +1,28 @@
+name: defense-lite
+
+requirements:
+  require_citations: true
+  require_shall: true
+  require_quant_acceptance: true
+
+testing:
+  coverage_min: 0.70
+
+approvals:
+  enforce_pr_only: true
+  protect_paths:
+    - "requirements/baseline/"
+    - ".github/workflows/"
+    - "policy/"
+    - "tools/"
+
+evidence:
+  required_items:
+    - "requirements_baseline"
+    - "trace_matrix"
+    - "junit.xml"
+    - "coverage.xml"
+    - "ci_logs_link"
+    - "commit_ref"
+    - "manifest.json"
+    - "sha256"

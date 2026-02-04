@@ -1,0 +1,16 @@
+name: defense-trace-lite
+rules:
+  - id: DF-TRACE-REQ-001
+    description: "각 요구사항은 최소 1개 이상의 근거(citation)와 검증 방법을 가져야 한다."
+    kb_query: "requirement citation source rationale verification method shall"
+    severity: warn
+
+  - id: DF-TRACE-LINK-001
+    description: "REQ->UNIT->CODE->TEST->CI(EVIDENCE) 추적 체인이 끊기지 않아야 한다."
+    kb_query: "trace matrix REQ UNIT CODE TEST CI evidence manifest baseline commit"
+    severity: warn
+
+  - id: DF-AUDIT-001
+    description: "baseline_id ↔ commit ↔ CI run ↔ artifacts ↔ evidence checksum이 연결되어야 한다."
+    kb_query: "baseline_id commit CI run artifacts evidence checksum sha256 audit trail"
+    severity: warn

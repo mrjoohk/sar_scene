@@ -1,0 +1,16 @@
+name: aviation-do178-like-lite
+rules:
+  - id: AV-REQ-001
+    description: "요구사항은 완전성/일관성/검증가능성을 만족해야 하며, 모호한 표현 대신 정량 기준을 사용해야 한다."
+    kb_query: "requirements complete consistent verifiable unambiguous measurable shall acceptance criteria"
+    severity: warn
+
+  - id: AV-TRACE-001
+    description: "HLLR/LLR(상위/하위) 요구사항은 설계/코드/테스트로 양방향 추적이 가능해야 한다."
+    kb_query: "high level requirements low level requirements bidirectional traceability to code and test"
+    severity: warn
+
+  - id: AV-TEST-001
+    description: "검증방법(test/analysis/inspection/demonstration)에 맞는 evidence 산출물이 CI에서 자동 수집되어야 한다."
+    kb_query: "verification method test analysis inspection demonstration evidence junit coverage artifact"
+    severity: warn

@@ -1,0 +1,3 @@
+from_type,from_id,to_type,to_id,rationale,citation_key
+,,,,Unit test verifies resolution/latency thresholds.,KB:4983aa0235617806#c0
+,,,,Implementation file tied to SAR processing pipeline.,KB:4983aa0235617806#c0
